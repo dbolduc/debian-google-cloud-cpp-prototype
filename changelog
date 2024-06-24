@@ -1,0 +1,6 @@
+libgoogle-cloud-cpp-dev (0.0.0) testing; urgency=low
+
+  [ dbolduc ]
+  * Initial commit
+
+ -- dbolduc <dbolduc@google.com>  Sun,  16 Jun 2024 11:00:00 +0100

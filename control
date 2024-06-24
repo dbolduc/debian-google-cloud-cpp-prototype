@@ -1,0 +1,11 @@
+Package: libgoogle-cloud-cpp-dev
+Version: 0.0.0
+Section: libdevel
+Priority: optional
+Architecture: amd64
+Depends: libabsl-dev, libprotobuf-dev, protobuf-compiler, libgrpc++-dev, libgrpc-dev, protobuf-compiler-grpc, libcurl4-openssl-dev, libssl-dev, nlohmann-json3-dev
+Maintainer: dbolduc <dbolduc@google.com>
+Homepage: https://github.com/googleapis/google-cloud-cpp/
+Description: C++ Client Libraries for Google Cloud Platform
+ A collection of C++ Client Libraries for Google Cloud Platform services, such
+ as Google Cloud Storage and Google Cloud Bigtable.
