@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# DEBUG : reduce size of build while developing
+# Note that we do not enable opentelemetry. There is not a package for
+# opentelemetry-cpp yet.
+LIBRARIES = bigtable,storage
+#LIBRARIES = __ga_libraries__
+
+override_dh_auto_configure:
+	dh_auto_configure -O--buildsystem=cmake -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_SHARED_LIBS=yes \
+		-DBUILD_TESTING=OFF \
+		-DGOOGLE_CLOUD_CPP_ENABLE_EXAMPLES=OFF \
+		-DGOOGLE_CLOUD_CPP_WITH_MOCKS=OFF \
+		-DGOOGLE_CLOUD_CPP_ENABLE=${LIBRARIES}
+
+%:
+	dh $@ --buildsystem=cmake

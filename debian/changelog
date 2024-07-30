@@ -1,0 +1,13 @@
+google-cloud-cpp (2.25.0) testing; urgency=low
+
+  [ dbolduc ]
+  * Use dpkg-buildpackage; cleanups
+
+ -- dbolduc <dbolduc@google.com>  Sun,  30 Jun 2024 11:00:00 +0100
+
+google-cloud-cpp (0.0.0) testing; urgency=low
+
+  [ dbolduc ]
+  * Initial commit
+
+ -- dbolduc <dbolduc@google.com>  Sun,  16 Jun 2024 11:00:00 +0100

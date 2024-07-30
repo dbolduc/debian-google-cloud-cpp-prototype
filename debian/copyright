@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: libgoogle-cloud-cpp-dev
+Upstream-Name: google-cloud-cpp
 Upstream-Contact: dbolduc <dbolduc@google.com>
 Source: https://github.com/googleapis/google-cloud-cpp/
 Copyright: 2024 Google LLC

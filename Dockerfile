@@ -15,23 +15,20 @@
 # =================================
 # Purpose
 # =================================
-
-# The purpose of this Dockerfile is to test our debian package. It copies in the
-# local package, installs it, then builds and runs a quickstart that uses the
-# Cloud C++ libraries.
 #
-# To build the image:
-# ```
-# docker build -t tester -f tester.Dockerfile .
-# ```
+# The purpose of this Dockerfile is to
+# - build a debian package for google-cloud-cpp
+# - install the package
+# - verify the package works
 #
-# To inspect the image...
-# ```
-# # Create the container
-# docker container create --name tester tester
+# =================================
+# Usage
+# =================================
 #
-# # Get a shell in the container
-# docker run -it tester bash
+# Build the image:
+#
+# ```
+# docker build -t package-builder .
 # ```
 
 # =================================
@@ -50,8 +47,8 @@ FROM debian:trixie
 # =================================
 RUN apt-get update && \
     apt-get --no-install-recommends install -y apt-transport-https apt-utils \
-        automake build-essential ca-certificates cmake curl git \
-        gcc g++ m4 make ninja-build pkg-config tar wget zlib1g-dev
+        automake build-essential ca-certificates cmake curl debhelper-compat \
+        g++ gcc git m4 make ninja-build pkg-config tar wget zlib1g-dev
 
 # =================================
 # Install the development packages for direct `google-cloud-cpp` dependencies:
@@ -64,43 +61,43 @@ RUN apt-get update && \
         libcurl4-openssl-dev libssl-dev nlohmann-json3-dev
 
 # =================================
-# Install the google-cloud-cpp package
+# Fetch google-cloud-cpp
 # =================================
-WORKDIR /var/tmp/package
+WORKDIR /var/tmp/build/google-cloud-cpp
+ARG VERSION=2.25.0
 
-COPY libgoogle-cloud-cpp-dev.deb .
-RUN dpkg -i libgoogle-cloud-cpp-dev.deb
+# Note that we use a patched branch of google-cloud-cpp. Ideally we would have
+# the patches in this workspace and apply them. But I do not have time for that.
+# And I don't want to use sed either.
+
+#RUN curl -fsSL https://github.com/googleapis/google-cloud-cpp/archive/v${VERSION}.tar.gz | \
+RUN curl -fsSL https://github.com/dbolduc/google-cloud-cpp/archive/refs/heads/v${VERSION}-patched-for-deb-package.tar.gz | \
+    tar -xzf - --strip-components=1
 
 # =================================
-# Build a quickstart?
+# Add debian specific files (control, rules, etc.)
+# =================================
+RUN mkdir debian
+COPY debian debian/
+
+# =================================
+# Build the package
+# =================================
+RUN dpkg-buildpackage
+
+# =================================
+# Install the package
+# =================================
+WORKDIR /var/tmp/build
+RUN dpkg -i google-cloud-cpp_${VERSION}_amd64.deb
+
+# =================================
+# Test the package by building a quickstart?
 # =================================
 WORKDIR /var/tmp/quickstart
 
 COPY quickstart/quickstart.cc .
 COPY quickstart/CMakeLists.txt .
-
-# TODO : HACK : I am seeing the following error:
-#
-# ```
-# CMake Error at /usr/lib/x86_64-linux-gnu/cmake/google_cloud_cpp_common/google_cloud_cpp_common-targets.cmake:85 (message):
-#   The imported target "google-cloud-cpp::common" references the file
-# 
-#      "/usr/lib/lib/libgoogle_cloud_cpp_common.so.2.25.0"
-# 
-#   but this file does not exist.  Possible reasons include:
-# 
-#   * The file was deleted, renamed, or moved to another location.
-# ```
-#
-# I think this means I am not allowed to copy the installed artifacts
-# willy-nilly. The real lib is in /usr/lib/x86_64-linux-gnu/. I am not sure
-# where the /lib/lib/ comes from...
-#
-# I tried using CMAKE_INSTALL_DATAROOTDIR, but no luck.
-#
-# We can create symlinks to make the thing work.
-RUN ln -s /usr/include /usr/lib/include
-RUN ln -s /usr/lib/x86_64-linux-gnu /usr/lib/lib
 
 RUN cmake -S . -B cmake-out
 RUN cmake --build cmake-out
