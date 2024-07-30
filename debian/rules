@@ -4,11 +4,12 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-# DEBUG : reduce size of build while developing
 # Note that we do not enable opentelemetry. There is not a package for
 # opentelemetry-cpp yet.
-LIBRARIES = bigtable,storage
-#LIBRARIES = __ga_libraries__
+LIBRARIES = __ga_libraries__
+
+# DEBUG : reduce size of build while developing
+#LIBRARIES = bigtable,storage
 
 override_dh_auto_configure:
 	dh_auto_configure -O--buildsystem=cmake -- \
