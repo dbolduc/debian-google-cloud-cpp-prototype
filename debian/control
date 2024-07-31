@@ -2,7 +2,7 @@ Source: google-cloud-cpp
 Section: utils
 Priority: optional
 Maintainer: Darren Bolduc <dbolduc@google.com>
-Build-Depends: debhelper-compat (= 13), cmake, pkg-config
+Build-Depends: debhelper-compat (= 13), cmake, pkgconf
 Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://cloud.google.com/cpp

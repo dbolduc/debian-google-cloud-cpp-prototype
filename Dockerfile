@@ -48,7 +48,7 @@ FROM debian:trixie
 RUN apt-get update && \
     apt-get --no-install-recommends install -y apt-transport-https apt-utils \
         automake build-essential ca-certificates cmake curl debhelper-compat \
-        g++ gcc git m4 make ninja-build pkg-config tar wget zlib1g-dev
+        g++ gcc git m4 make ninja-build pkgconf tar wget zlib1g-dev
 
 # =================================
 # Install the development packages for direct `google-cloud-cpp` dependencies:
