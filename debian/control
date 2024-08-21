@@ -14,6 +14,66 @@ Section: libdevel
 Priority: optional
 Architecture: any
 Depends: libabsl-dev, libprotobuf-dev, protobuf-compiler, libgrpc++-dev, libgrpc-dev, protobuf-compiler-grpc, libcurl4-openssl-dev, libssl-dev, nlohmann-json3-dev
+#Depends: libgoogle-cloud-cpp-common, libgoogle-cloud-cpp-googleapis, libgoogle-cloud-cpp-grpc-utils, libgoogle-cloud-cpp-kms, libabsl-dev, libprotobuf-dev, protobuf-compiler, libgrpc++-dev, libgrpc-dev, protobuf-compiler-grpc, libcurl4-openssl-dev, libssl-dev, nlohmann-json3-dev
 Description: C++ Client Libraries for Google Cloud Platform
  A collection of C++ Client Libraries for Google Cloud Platform services, such
  as Google Cloud Storage and Google Cloud Bigtable.
+
+# NOTE TO SELF: It looks like we can keep the `rules` the same, and categorize
+# components based on `libgoogle-cloud-cpp-<foo>.install` file. e.g. this for
+# gRPC:
+# 
+# https://salsa.debian.org/debian/grpc/-/blob/master/debian/libgrpc++-dev.install?ref_type=heads
+
+Package: libgoogle-cloud-cpp-googleapis
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: protobuf-compiler, protobuf-compiler-grpc
+Description: C++ Proto Libraries for Google Cloud Platform
+ A collection of common C++ proto libraries for Google Cloud.
+
+# TODO : To have one common (with all of the internal stuff), or to split into individual libraries?
+Package: libgoogle-cloud-cpp-common
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libabsl-dev
+Description: C++ Common Libraries for Google Cloud Platform
+ C++ Common Libraries for Google Cloud Platform
+
+# TODO : To have one common (with all of the internal stuff), or to split into individual libraries?
+Package: libgoogle-cloud-cpp-grpc-utils
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-common, libgoogle-cloud-cpp-googleapis, libgrpc++-dev, libgrpc-dev
+Description: C++ gRPC-based Common Libraries for Google Cloud Platform
+ C++ gRPC-based Common Libraries for Google Cloud Platform
+
+# TODO : To have one common (with all of the internal stuff), or to split into individual libraries?
+Package: libgoogle-cloud-cpp-rest-internal
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-common, libcurl4-openssl-dev, libssl-dev, nlohmann-json3-dev
+Description: C++ REST-based Common Libraries for Google Cloud Platform
+ C++ REST-based Common Libraries for Google Cloud Platform
+
+# Example of a gRPC based service
+Package: libgoogle-cloud-cpp-kms
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-grpc-utils
+Description: Google KMS C++ Client Library
+ TODO : grab the description from somewhere
+
+# Example of a REST based service
+Package: libgoogle-cloud-cpp-storage
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-rest-internal
+Description: Google Cloud Storage (GCS) C++ Client Library
+ TODO : grab the description from somewhere

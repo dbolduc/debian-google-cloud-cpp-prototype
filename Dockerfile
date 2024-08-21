@@ -89,15 +89,22 @@ RUN dpkg-buildpackage
 # Install the package
 # =================================
 WORKDIR /var/tmp/build
-RUN dpkg -i google-cloud-cpp_${VERSION}_amd64.deb
+#RUN dpkg -i google-cloud-cpp_${VERSION}_amd64.deb
+RUN dpkg -i libgoogle-cloud-cpp-common_${VERSION}_all.deb
+
+RUN dpkg -i libgoogle-cloud-cpp-rest-internal_${VERSION}_all.deb
+RUN dpkg -i libgoogle-cloud-cpp-storage_${VERSION}_all.deb
+
+RUN dpkg -i libgoogle-cloud-cpp-googleapis_${VERSION}_all.deb
+RUN dpkg -i libgoogle-cloud-cpp-grpc-utils_${VERSION}_all.deb
+RUN dpkg -i libgoogle-cloud-cpp-kms_${VERSION}_all.deb
 
 # =================================
 # Test the package by building a quickstart?
 # =================================
 WORKDIR /var/tmp/quickstart
 
-COPY quickstart/quickstart.cc .
-COPY quickstart/CMakeLists.txt .
+COPY quickstart/ .
 
 RUN cmake -S . -B cmake-out
 RUN cmake --build cmake-out

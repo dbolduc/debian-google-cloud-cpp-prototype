@@ -16,9 +16,13 @@
 # library in CMake-based projects.
 
 cmake_minimum_required(VERSION 3.10...3.24)
-project(google-cloud-cpp-storage-quickstart CXX)
+project(test-google-cloud-cpp CXX)
 
 find_package(google_cloud_cpp_storage REQUIRED)
+add_executable(quickstart_storage quickstart_storage.cc)
+target_link_libraries(quickstart_storage google-cloud-cpp::storage)
 
-add_executable(quickstart quickstart.cc)
-target_link_libraries(quickstart google-cloud-cpp::storage)
+find_package(google_cloud_cpp_kms REQUIRED)
+add_executable(quickstart_kms quickstart_kms.cc)
+target_link_libraries(quickstart_kms google-cloud-cpp::kms)
+

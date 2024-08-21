@@ -1,0 +1,6 @@
+usr/include/google/cloud/kms
+usr/lib/${DEB_HOST_MULTIARCH}/libgoogle_cloud_cpp_kms.so*
+usr/lib/${DEB_HOST_MULTIARCH}/cmake/google_cloud_cpp_kms/
+usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/google_cloud_cpp_kms.pc
+usr/lib/${DEB_HOST_MULTIARCH}/libgoogle_cloud_cpp_kms_protos.so*
+usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/google_cloud_cpp_kms_protos.pc
