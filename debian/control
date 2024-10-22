@@ -60,6 +60,15 @@ Depends: libgoogle-cloud-cpp-common, libcurl4-openssl-dev, libssl-dev, nlohmann-
 Description: C++ REST-based Common Libraries for Google Cloud Platform
  C++ REST-based Common Libraries for Google Cloud Platform
 
+# TODO : To have one common (with all of the internal stuff), or to split into individual libraries?
+Package: libgoogle-cloud-cpp-rest-protobuf-internal
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-rest-internal, libgoogle-cloud-cpp-grpc-utils
+Description: C++ REST+gRPC internal libraries for Google Cloud Platform
+ C++ REST+gRPC internal libraries for Google Cloud Platform
+
 # Example of a gRPC based service
 Package: libgoogle-cloud-cpp-kms
 Section: libdevel
@@ -76,4 +85,51 @@ Priority: optional
 Architecture: all
 Depends: libgoogle-cloud-cpp-rest-internal
 Description: Google Cloud Storage (GCS) C++ Client Library
+ TODO : grab the description from somewhere
+
+# TODO : Example of a service with conflicting header paths
+Package: libgoogle-cloud-cpp-iam
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-iam-v2
+Description: Google IAM C++ Client Library
+ TODO : grab the description from somewhere
+
+# TODO : Example of a service with conflicting header paths
+Package: libgoogle-cloud-cpp-iam-v2
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-grpc-utils
+Description: Google IAM C++ Client Library
+ TODO : grab the description from somewhere
+
+# TODO : Compute
+Package: libgoogle-cloud-cpp-compute
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-rest-internal
+Description: GCE C++ Client Library
+ TODO : grab the description from somewhere
+
+# TODO : cross library asset?
+# This supposedly depends on accesscontextmanager, osconfig
+Package: libgoogle-cloud-cpp-orgpolicy
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-grpc-utils
+Description: Google Cloud Asset C++ Client Library
+ TODO : grab the description from somewhere
+
+# TODO : cross library asset?
+# This supposedly depends on accesscontextmanager, osconfig
+Package: libgoogle-cloud-cpp-asset
+Section: libdevel
+Priority: optional
+Architecture: all
+Depends: libgoogle-cloud-cpp-orgpolicy
+Description: Google Cloud Asset C++ Client Library
  TODO : grab the description from somewhere

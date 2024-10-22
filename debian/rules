@@ -9,7 +9,8 @@
 #LIBRARIES = __ga_libraries__
 
 # DEBUG : reduce size of build while developing
-LIBRARIES = kms,storage
+LIBRARIES = kms,storage,iam,compute
+#LIBRARIES = kms,storage,iam,compute,asset
 
 override_dh_auto_configure:
 	dh_auto_configure -O--buildsystem=cmake -- \

@@ -1,0 +1,13 @@
+usr/include/google/cloud/rest_options.h
+usr/include/google/cloud/internal/async_rest_long_running_operation.h
+usr/include/google/cloud/internal/async_rest_long_running_operation_custom.h
+usr/include/google/cloud/internal/async_rest_polling_loop.h
+usr/include/google/cloud/internal/async_rest_polling_loop_custom.h
+usr/include/google/cloud/internal/async_rest_polling_loop_impl.h
+usr/include/google/cloud/internal/async_rest_retry_loop.h
+usr/include/google/cloud/internal/rest_background_threads_impl.h
+usr/include/google/cloud/internal/rest_completion_queue_impl.h
+usr/include/google/cloud/internal/rest_stub_helpers.h
+usr/lib/${DEB_HOST_MULTIARCH}/libgoogle_cloud_cpp_rest_protobuf_internal.so*
+usr/lib/${DEB_HOST_MULTIARCH}/cmake/google_cloud_cpp_rest_protobuf_internal/
+usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/google_cloud_cpp_rest_protobuf_internal.pc

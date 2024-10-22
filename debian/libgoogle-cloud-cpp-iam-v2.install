@@ -1,0 +1,8 @@
+# From protolists/iam_v2.list
+usr/include/google/iam/v2/deny.proto
+usr/include/google/iam/v2/policy.proto
+usr/include/google/iam/v2/deny.*pb.h
+usr/include/google/iam/v2/policy.*pb.h
+usr/lib/${DEB_HOST_MULTIARCH}/libgoogle_cloud_cpp_iam_v2_protos.so*
+usr/lib/${DEB_HOST_MULTIARCH}/cmake/google_cloud_cpp_iam_v2/
+usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/google_cloud_cpp_iam_v2_protos.pc

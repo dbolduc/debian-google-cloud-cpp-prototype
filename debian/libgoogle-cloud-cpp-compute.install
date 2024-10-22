@@ -1,0 +1,6 @@
+usr/include/google/cloud/compute
+usr/lib/${DEB_HOST_MULTIARCH}/libgoogle_cloud_cpp_compute_*.so*
+usr/lib/${DEB_HOST_MULTIARCH}/cmake/google_cloud_cpp_compute/
+usr/lib/${DEB_HOST_MULTIARCH}/cmake/google_cloud_cpp_compute_protos/
+usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/google_cloud_cpp_compute.pc
+usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/google_cloud_cpp_compute_*.pc

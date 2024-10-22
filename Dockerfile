@@ -92,12 +92,27 @@ WORKDIR /var/tmp/build
 #RUN dpkg -i google-cloud-cpp_${VERSION}_amd64.deb
 RUN dpkg -i libgoogle-cloud-cpp-common_${VERSION}_all.deb
 
+# Storage, which is REST
 RUN dpkg -i libgoogle-cloud-cpp-rest-internal_${VERSION}_all.deb
 RUN dpkg -i libgoogle-cloud-cpp-storage_${VERSION}_all.deb
 
+# Basic gRPC
 RUN dpkg -i libgoogle-cloud-cpp-googleapis_${VERSION}_all.deb
 RUN dpkg -i libgoogle-cloud-cpp-grpc-utils_${VERSION}_all.deb
 RUN dpkg -i libgoogle-cloud-cpp-kms_${VERSION}_all.deb
+
+# idk, it's compute, it's weird. Also a *REGAPIC.
+RUN dpkg -i libgoogle-cloud-cpp-rest-protobuf-internal_${VERSION}_all.deb
+RUN dpkg -i libgoogle-cloud-cpp-compute_${VERSION}_all.deb
+
+# Shared proto dep
+RUN dpkg -i libgoogle-cloud-cpp-iam-v2_${VERSION}_all.deb
+RUN dpkg -i libgoogle-cloud-cpp-iam_${VERSION}_all.deb
+
+# Cross library dep
+# Also the weird, common google/cloud/orgpolicy/*.proto
+#RUN dpkg -i libgoogle-cloud-cpp-orgpolicy_${VERSION}_all.deb
+#RUN dpkg -i libgoogle-cloud-cpp-asset_${VERSION}_all.deb
 
 # =================================
 # Test the package by building a quickstart?

@@ -18,11 +18,11 @@
 cmake_minimum_required(VERSION 3.10...3.24)
 project(test-google-cloud-cpp CXX)
 
-find_package(google_cloud_cpp_storage REQUIRED)
-add_executable(quickstart_storage quickstart_storage.cc)
-target_link_libraries(quickstart_storage google-cloud-cpp::storage)
+set(libs "storage" "kms" "iam" "compute")
+#set(libs "storage" "kms" "iam" "compute" "asset")
 
-find_package(google_cloud_cpp_kms REQUIRED)
-add_executable(quickstart_kms quickstart_kms.cc)
-target_link_libraries(quickstart_kms google-cloud-cpp::kms)
-
+foreach (lib IN LISTS libs)
+  find_package(google_cloud_cpp_${lib} REQUIRED)
+  add_executable(quickstart_${lib} quickstart_${lib}.cc)
+  target_link_libraries(quickstart_${lib} google-cloud-cpp::${lib})
+endforeach ()

@@ -2,7 +2,18 @@ usr/include/google/api
 usr/include/google/cloud/extended_operations.*
 usr/include/google/cloud/common/operation_metadata.*
 usr/include/google/cloud/orgpolicy/v1/orgpolicy.*
-usr/include/google/iam
+# START IAM - conflicts with iam_protos. OH JOY.
+usr/include/google/iam/credentials/v1/common.proto
+usr/include/google/iam/credentials/v1/iamcredentials.proto
+usr/include/google/iam/v1/iam_policy.proto
+usr/include/google/iam/v1/options.proto
+usr/include/google/iam/v1/policy.proto
+usr/include/google/iam/credentials/v1/common.*pb.h
+usr/include/google/iam/credentials/v1/iamcredentials.*pb.h
+usr/include/google/iam/v1/iam_policy.*pb.h
+usr/include/google/iam/v1/options.*pb.h
+usr/include/google/iam/v1/policy.*pb.h
+# END IAM - conflicts with iam_protos. OH JOY.
 usr/include/google/longrunning
 usr/include/google/rpc
 usr/include/google/type
